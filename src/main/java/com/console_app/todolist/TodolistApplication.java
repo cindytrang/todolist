@@ -5,18 +5,28 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.console_app.todolist.controller.TaskController;
+import com.console_app.todolist.controller.InputHandler;
 import com.console_app.todolist.view.TaskView;
 import com.console_app.todolist.model.Task;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
+/**
+ * Main application class responsible for managing a To-Do List application.
+ * This class is responsible for interactions between the Task Controller, Task View,
+ * and user input handling.
+ */
 @SpringBootApplication
 public class TodolistApplication implements CommandLineRunner{
+	private static final Logger logger = LoggerFactory.getLogger(TodolistApplication.class);
 	@Autowired
 	TaskController taskController;
 	@Autowired
 	TaskView taskView;
+	@Autowired
+	InputHandler inputHandler;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolistApplication.class, args);
@@ -24,10 +34,18 @@ public class TodolistApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Running To-Do List Application...");
+		logger.info("Starting  To-Do List application");
 		runApplication();
+		logger.info("To-Do List application finished");
 	}
 
+	/**
+	 * Runs the main loop of the To-Do List application, displaying a menu to the user
+	 * and handling their input to perform various tasks like adding, viewing, updating,
+	 * completing or removing tasks, and exiting the application.
+	 *
+	 * Can be extended by more operations
+	 */
 	private void runApplication() {
 		boolean running = true;
 		while (running) {
@@ -45,14 +63,14 @@ public class TodolistApplication implements CommandLineRunner{
 					updateTask();
 					break;
 				case 4:
-					markTaskComplete();
+					toggleTaskCompletion();
 					break;
 				case 5:
 					removeTask();
 					break;
 				case 6:
 					running = false;
-					System.out.println("Exiting application. Goodbye!");
+					System.out.println("Exiting application. Done!");
 					break;
 				default:
 					System.out.println("Invalid option. Please try again.");
@@ -61,10 +79,8 @@ public class TodolistApplication implements CommandLineRunner{
 	}
 
 	private void addTask() {
-		System.out.println("Enter task title:");
-		String title = taskView.getStringInput();
-		System.out.println("Enter task description:");
-		String description = taskView.getStringInput();
+		String title = inputHandler.getInput("Enter task title:");
+		String description = inputHandler.getInput("Enter task description:");
 		taskController.addTask(title, description);
 		System.out.println("Task added successfully.");
 	}
@@ -75,41 +91,33 @@ public class TodolistApplication implements CommandLineRunner{
 
 	private void updateTask() {
 		viewTasks();
-		System.out.println("Enter the number of the task to update:");
-		int index = taskView.getIntInput() - 1; // Subtract 1 because list is displayed 1-indexed
+		int index = inputHandler.getTaskIndex("Enter the number of the task to update:");
+		if (index == -1) return;
 
 		Task task = taskController.getTask(index);
-		if (task != null) {
-			System.out.println("Enter new title (or press enter to keep current):");
-			String title = taskView.getStringInput();
-			if (!title.isEmpty()) {
-				task.setTitle(title);
-			}
+		String newTitle = inputHandler.getUpdatedField("Enter new title (or press enter to keep current):", task.getTitle());
+		String newDescription = inputHandler.getUpdatedField("Enter new description (or press enter to keep current):", task.getDescription());
 
-			System.out.println("Enter new description (or press enter to keep current):");
-			String description = taskView.getStringInput();
-			if (!description.isEmpty()) {
-				task.setDescription(description);
-			}
-
-			taskController.updateTask(index, task.getTitle(), task.getDescription());
-			System.out.println("Task updated successfully.");
-		} else {
-			System.out.println("Invalid task number. No changes made.");
-		}
+		taskController.updateTask(index, newTitle, newDescription);
+		System.out.println("Task updated successfully.");
 	}
 
-	private void markTaskComplete() {
+	private void toggleTaskCompletion() {
 		viewTasks();
-		System.out.println("Enter the number of the task to mark as complete:");
-		int index = taskView.getIntInput() - 1; // Subtract 1 because list is displayed 1-indexed
-		taskController.markTaskComplete(index);
+		int index = inputHandler.getTaskIndex("Enter the number of the task to mark as complete:");
+		if (index != -1) {
+			Task task = taskController.getTask(index);
+			task.setCompleted(!task.isCompleted());
+		}
+
 	}
 
 	private void removeTask() {
 		viewTasks();
-		System.out.println("Enter the number of the task to remove:");
-		int index = taskView.getIntInput() - 1; // Subtract 1 because list is displayed 1-indexed
-		taskController.removeTask(index);
+		int index = inputHandler.getTaskIndex("Enter the number of the task to remove:");
+		if (index != -1) {
+			taskController.removeTask(index);
+			System.out.println("Task removed successfully.");
+		}
 	}
 }

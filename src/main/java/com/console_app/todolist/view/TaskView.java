@@ -18,7 +18,7 @@ public class TaskView {
         System.out.println("1. Add Task");
         System.out.println("2. View Tasks");
         System.out.println("3. Update Task");
-        System.out.println("4. Mark Task as Complete");
+        System.out.println("4. Change Status");
         System.out.println("5. Remove Task");
         System.out.println("6. Exit");
         System.out.print("Enter your choice: ");
@@ -30,22 +30,31 @@ public class TaskView {
         if (tasks.isEmpty()) {
             System.out.println("No tasks to display.");
         } else {
-            System.out.println("Task List:");
-            for (Task task : tasks) {
-                System.out.println(task.getTitle() + " [" + (task.isCompleted() ? "Completed" : "Not Completed") + "]");
+            System.out.println("------------------------Task List------------------------");
+            for (int i = 0; i < tasks.size(); i++) {
+                Task task = tasks.get(i);
+                String status = task.isCompleted() ? "[Completed]" : "[Incomplete]";
+                System.out.printf(" %d. | %s | %s | %s |\n",
+                        (i + 1),
+                        task.getTitle(),
+                        status,
+                        task.getDescription());
             }
+            System.out.println("--------------------------------------------------------");
         }
     }
 
-    public void displayTask(Task task) {
-        System.out.println(task.getTitle() + ": " + task.getDescription() + " [" + (task.isCompleted() ? "Completed" : "Not Completed") + "]");
-    }
-
     public int getIntInput() {
-        return scanner.nextInt();
+        int input = scanner.nextInt();
+        scanner.nextLine();
+        return input;
     }
 
     public String getStringInput() {
         return scanner.nextLine();
+    }
+
+    public int getTaskCount() {
+        return taskController.getTasks().size();
     }
 }

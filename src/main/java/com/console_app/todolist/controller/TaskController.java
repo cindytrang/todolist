@@ -1,6 +1,7 @@
 package com.console_app.todolist.controller;
 
 import com.console_app.todolist.model.Task;
+import com.console_app.todolist.view.TaskView;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -10,7 +11,6 @@ import lombok.*;
  * This class manages the operations on tasks in the to-do list.
  * It handles adding, removing, updating, and marking tasks as complete.
  */
-
 @Component
 public class TaskController {
     @Getter
@@ -34,9 +34,9 @@ public class TaskController {
         }
     }
 
-    public void markTaskComplete(int index) {
+    public void markTaskInComplete(int index) {
         if(isValidIndex(index)) {
-            tasks.get(index).setCompleted(true);
+            tasks.get(index).setCompleted(false);
         }
     }
 
@@ -55,5 +55,4 @@ public class TaskController {
     public boolean isValidIndex(int index) {
         return index >= 0 && index < tasks.size();
     }
-
 }
