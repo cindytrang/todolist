@@ -4,14 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.console_app.todolist.controller.TaskController;
-import com.console_app.todolist.controller.InputHandler;
-import com.console_app.todolist.view.TaskView;
-import com.console_app.todolist.model.Task;
+import com.console_app.todolist.v1.controller.TaskController;
+import com.console_app.todolist.v1.controller.InputHandler;
+import com.console_app.todolist.v1.view.TaskView;
+import com.console_app.todolist.v1.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.*;
 
 /**
  * Main application class responsible for managing a To-Do List application.

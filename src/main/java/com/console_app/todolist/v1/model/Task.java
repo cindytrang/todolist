@@ -1,4 +1,4 @@
-package com.console_app.todolist.model;
+package com.console_app.todolist.v1.model;
 
 import lombok.*;
 

@@ -1,11 +1,8 @@
-package com.console_app.todolist.controller;
+package com.console_app.todolist.v1.controller;
 
-import com.console_app.todolist.view.TaskView;
+import com.console_app.todolist.v1.view.TaskView;
 
 import org.springframework.stereotype.Component;
-
-import java.util.*;
-import lombok.*;
 
 /**
  * This class manages the user input in the to-do list application.

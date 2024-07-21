@@ -1,7 +1,6 @@
-package com.console_app.todolist.controller;
+package com.console_app.todolist.v1.controller;
 
-import com.console_app.todolist.model.Task;
-import com.console_app.todolist.view.TaskView;
+import com.console_app.todolist.v1.model.Task;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
