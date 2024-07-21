@@ -1,7 +1,7 @@
-package com.console_app.todolist.v1.view;
+package com.cindy.playground.example1.v1.view;
 
-import com.console_app.todolist.v1.model.Task;
-import com.console_app.todolist.v1.controller.TaskController;
+import com.cindy.playground.example1.v1.controller.TaskController;
+import com.cindy.playground.example1.v1.model.Task;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 

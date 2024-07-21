@@ -1,4 +1,4 @@
-package com.console_app.todolist.v1.model;
+package com.cindy.playground.example1.v1.model;
 
 import lombok.*;
 

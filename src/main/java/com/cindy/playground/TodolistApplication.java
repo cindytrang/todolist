@@ -1,13 +1,13 @@
-package com.console_app.todolist;
+package com.cindy.playground;
 
+import com.cindy.playground.example1.v1.controller.InputHandler;
+import com.cindy.playground.example1.v1.controller.TaskController;
+import com.cindy.playground.example1.v1.model.Task;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.console_app.todolist.v1.controller.TaskController;
-import com.console_app.todolist.v1.controller.InputHandler;
-import com.console_app.todolist.v1.view.TaskView;
-import com.console_app.todolist.v1.model.Task;
+import com.cindy.playground.example1.v1.view.TaskView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +20,11 @@ import org.slf4j.LoggerFactory;
 public class TodolistApplication implements CommandLineRunner{
 	private static final Logger logger = LoggerFactory.getLogger(TodolistApplication.class);
 	@Autowired
-	TaskController taskController;
+    TaskController taskController;
 	@Autowired
 	TaskView taskView;
 	@Autowired
-	InputHandler inputHandler;
+    InputHandler inputHandler;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodolistApplication.class, args);

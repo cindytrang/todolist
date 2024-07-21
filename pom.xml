@@ -8,10 +8,10 @@
 		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.console-app</groupId>
-	<artifactId>todolist</artifactId>
+	<groupId>com.cindy.playground</groupId>
+	<artifactId>playground</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>todolist</name>
+	<name>playground</name>
 	<description>Simple project with Spring Boot</description>
 	<url/>
 	<licenses>

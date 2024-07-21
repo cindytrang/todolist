@@ -1,4 +1,4 @@
-package com.console_app.todolist.v2.view;
+package com.cindy.playground.example1.v2.view;
 
 import java.util.Scanner;
 

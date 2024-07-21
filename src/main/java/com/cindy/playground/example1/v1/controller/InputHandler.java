@@ -1,6 +1,6 @@
-package com.console_app.todolist.v1.controller;
+package com.cindy.playground.example1.v1.controller;
 
-import com.console_app.todolist.v1.view.TaskView;
+import com.cindy.playground.example1.v1.view.TaskView;
 
 import org.springframework.stereotype.Component;
 

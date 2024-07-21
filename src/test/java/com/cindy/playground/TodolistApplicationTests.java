@@ -1,4 +1,4 @@
-package com.console_app.todolist;
+package com.cindy.playground;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

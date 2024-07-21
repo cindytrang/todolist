@@ -1,4 +1,4 @@
-package com.console_app.todolist.v2.model;
+package com.cindy.playground.example1.v2.model;
 
 import java.util.Arrays;
 

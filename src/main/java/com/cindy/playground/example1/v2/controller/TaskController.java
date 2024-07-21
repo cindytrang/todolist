@@ -1,9 +1,9 @@
-package com.console_app.todolist.v2.controller;
+package com.cindy.playground.example1.v2.controller;
 
-import com.console_app.todolist.v2.model.Status;
-import com.console_app.todolist.v2.model.Task;
-import com.console_app.todolist.v2.model.TaskStorage;
-import com.console_app.todolist.v2.view.View;
+import com.cindy.playground.example1.v2.model.Status;
+import com.cindy.playground.example1.v2.model.Task;
+import com.cindy.playground.example1.v2.model.TaskStorage;
+import com.cindy.playground.example1.v2.view.View;
 
 import java.util.UUID;
 
