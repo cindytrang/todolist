@@ -56,4 +56,3 @@ public class TaskController {
         taskStorage.markAsComplete(uuidNumber);
     }
 }
-//TODO: itd. kolejne opcje. :) oddaję mysze, prosze zaimplementuj pozostale akcje.

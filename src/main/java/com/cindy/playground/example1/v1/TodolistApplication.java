@@ -1,4 +1,4 @@
-package com.cindy.playground;
+package com.cindy.playground.example1.v1;
 
 import com.cindy.playground.example1.v1.controller.InputHandler;
 import com.cindy.playground.example1.v1.controller.TaskController;
